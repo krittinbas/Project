@@ -8,7 +8,7 @@ import smtplib
 import random
 from ftplib import FTP
 import os
-from datetime import datetime
+import datetime
 
 
 
@@ -360,7 +360,7 @@ class App(tk.Tk):
         self.topup_user_input.bind('<FocusIn>',self.on_enter_topup)
         self.topup_user_input.bind('<FocusOut>',self.on_enter_topup)
 
-        self.topup_button_submit = tk.Button(self.topup_label_frame, text="เติมเงิน", bg="#4C956C", fg="white", width=13, height=1, border=0, font=('Browallia New', 15, 'bold'), command=lambda: self.topup(uid))
+        self.topup_button_submit = tk.Button(self.topup_label_frame, text="เติมเงิน", bg="#4C956C", fg="white", width=13, height=1, border=0, font=('Browallia New', 15, 'bold'), command=lambda: [self.topup(uid),self.timestamp_topup(uid,"TIMESTAMP_TOPUP")])
 
         self.topup_button_submit.place(x=195,y=230)
 
@@ -522,6 +522,10 @@ class App(tk.Tk):
             if user['UID'] == card_owner_uid:
                 card_owner_info = user
                 break
+        
+        email = card_owner_info['Email']
+        
+        timestamp = datetime.datetime.now()
 
         new_window = tk.Toplevel(self)
         new_window.title('ยืนยันการชำระ')
@@ -536,7 +540,7 @@ class App(tk.Tk):
         total_cost_label = tk.Label(new_window, text=f"รวมทั้งหมด: {total_cost} บาท", font=('Browallia New', 16),bg='white')
         total_cost_label.place(x=760, y=390)
 
-        confirm_button = tk.Button(new_window, text="ยืนยันการชำระเงิน", bg="#4C956C", fg="white", width=15, height=1, border=0, font=('Browallia New', 16, 'bold'), command=lambda : self.buyitem(total_cost, uid , "SHOP1"))
+        confirm_button = tk.Button(new_window, text="ยืนยันการชำระเงิน", bg="#4C956C", fg="white", width=15, height=1, border=0, font=('Browallia New', 16, 'bold'), command=lambda : [self.buyitem(total_cost, uid , "SHOP1"),self.timestamp_shop1("money",total_cost, timestamp, card_owner_info["Email"], uid, "TIMESTAMP_SHOP1")])
         confirm_button.place(x=765,y=440)
 
         scan_card_label = tk.Button(new_window,text="แสกนบัตร",bg="#FFBF00",fg="white",width=15,height=1,border=0,font=('Browallia New',15,'bold'), command=lambda: self.scan_card2(card_owner_uid))
@@ -661,6 +665,16 @@ class App(tk.Tk):
             if user['UID'] == card_owner_uid:
                 card_owner_info = user
                 break
+        
+        timestamp = datetime.datetime.now()
+        about = ""
+        timestamp_shop = ""
+        if (shop_name == "SHOP1") :
+            about = "point"
+            timestamp_shop = "TIMESTAMP_SHOP1"
+        if (shop_name == "SHOP2") :
+            about = "point"
+            timestamp_shop = "TIMESTAMP_SHOP2"
 
         new_window = tk.Toplevel(self)
         new_window.title('ยืนยันการชำระ')
@@ -678,7 +692,7 @@ class App(tk.Tk):
         total_cost_label = tk.Label(new_window, text=f"รวมทั้งหมด: {total_points} แต้ม", font=('Browallia New', 16),bg='white')
         total_cost_label.place(x=760, y=390)
 
-        confirm_button = tk.Button(new_window, text="ยืนยันการชำระเงิน", bg="#4C956C", fg="white", width=15, height=1, border=0, font=('Browallia New', 16, 'bold'),  command=lambda: self.verify_otp_point(uid,shop_name,total_points,otp_input))
+        confirm_button = tk.Button(new_window, text="ยืนยันการชำระเงิน", bg="#4C956C", fg="white", width=15, height=1, border=0, font=('Browallia New', 16, 'bold'),  command=lambda: [self.verify_otp_point(card_owner_info["UID"],shop_name,total_points,otp_input),self.timestamp_shop1(about,total_points,timestamp,card_owner_info["Email"],card_owner_info["UID"],timestamp_shop)])
         confirm_button.place(x=765,y=440)
         
         otp_input = tk.Entry(new_window,width=20,fg='black',border=0,bg="#fff",font=('Browallia New',18))
@@ -783,6 +797,8 @@ class App(tk.Tk):
             if user['UID'] == card_owner_uid:
                 card_owner_info = user
                 break
+        
+        timestamp = datetime.datetime.now()
 
         new_window = tk.Toplevel(self)
         new_window.title('ยืนยันการชำระ')
@@ -797,7 +813,7 @@ class App(tk.Tk):
         total_cost_label = tk.Label(new_window, text=f"รวมทั้งหมด: {total_points} แต้ม", font=('Browallia New', 16),bg='white')
         total_cost_label.place(x=760, y=390)
 
-        confirm_button = tk.Button(new_window, text="ยืนยันการชำระเงิน", bg="#4C956C", fg="white", width=15, height=1, border=0, font=('Browallia New', 16, 'bold'), command=lambda : self.buyitem(total_points, uid , "SHOP2"))
+        confirm_button = tk.Button(new_window, text="ยืนยันการชำระเงิน", bg="#4C956C", fg="white", width=15, height=1, border=0, font=('Browallia New', 16, 'bold'), command=lambda : [self.buyitem(total_points, uid , "SHOP2"),self.timestamp_shop1("money",total_points, timestamp, card_owner_info["Email"], card_owner_info["UID"], "TIMESTAMP_SHOP2")])
         confirm_button.place(x=765,y=440)
 
         scan_card_label = tk.Button(new_window,text="แสกนบัตร",bg="#FFBF00",fg="white",width=15,height=1,border=0,font=('Browallia New',15,'bold'))
@@ -1324,7 +1340,71 @@ class App(tk.Tk):
         
         with open(local_filepath, 'rb') as file:
             ftp.storbinary(f'STOR {filename}', file)
+    
+    #======================================================= จบ download & upload =============================================#
+    
+    #======================================================= time stamp  =============================================#
 
+    def timestamp_shop1(self , about , cost , timestamp , email, uid, group=""):
+        try:
+            with open("data.json", "r") as file:
+                data = json.load(file)
+                max_id = max([user['ID'] for user in data[group]])
+
+        except (FileNotFoundError, ValueError):
+            data = {group: []}
+            max_id = 0
+            
+
+        timestamp = {
+            "ID": max_id + 1,
+            "ABOUT" : about,
+            "UID" : uid,
+            "Email" : email,
+            "Cost" : cost ,
+            "TimeStamp": timestamp.strftime("%Y-%m-%d %H:%M:%S"),
+        }
+
+        data[group].append(timestamp)
+
+        with open("data.json", "w") as file:
+            json.dump(data, file, indent=4)
+    
+    def timestamp_topup(self,uid, group=""):
+        
+        timestamp = datetime.datetime.now()
+        
+        with open('data.json', 'r') as file:
+            data = json.load(file)
+
+        card_owner_info = None
+        for user in data['USER']:
+            if user['UID'] == uid:
+                card_owner_info = user
+                break
+        
+        try:
+            with open("data.json", "r") as file:
+                data = json.load(file)
+                max_id = max([user['ID'] for user in data[group]])
+
+        except (FileNotFoundError, ValueError):
+            data = {group: []}
+            max_id = 0
+
+        shopnew_user = {
+            "ID": max_id + 1,
+            "UID": uid,
+            "Email": card_owner_info["Email"],
+            "Topup": self.topup_user_input.get(),
+            "TimeStamp": timestamp.strftime("%Y-%m-%d %H:%M:%S"),
+        }
+
+        data[group].append(shopnew_user)
+
+        with open("data.json", "w") as file:
+            json.dump(data, file, indent=4)
+            
 
 
 # upload_file_to_ftp(ftp_host, ftp_username, ftp_password, new_file_path, upload_path)
@@ -1358,12 +1438,28 @@ class App(tk.Tk):
     #     except self.ftplib.all_errors as e:
     #         print(f"Failed to download {remote_filename}: {e}")
 
+
 if __name__ == "__main__":
     ftp = FTP('127.0.0.1')
     ftp.login(user='Admin', passwd='1234')
     local_directory = r'C:\Krittin\Network\Project'
     local_filepath = r'C:\Krittin\Network\Project\data.json'   
     my_obj = NFC_Reader()
-    uid = my_obj.read_uid()
+    state = True
+    n = 1
+    while state:
+        check = my_obj.monitor_cards()    
+        if check == 0 and n == 1:
+            print("------------------------")
+            print("\nCard connected!")
+            uid = my_obj.read_uid()
+            print(f"Card UID: {uid}")
+            print(type(uid))
+            print("...")
+            n = 0
+            break 
+        elif check != 0:
+            n=1
+        
     app = App()
     app.mainloop()

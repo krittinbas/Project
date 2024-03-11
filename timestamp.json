@@ -25,7 +25,7 @@
             "UserName": "chinapak",
             "LastName": "tompudsa",
             "Email": "chinapak.t@ku.th",
-            "Money": 9598507.0
+            "Money": 9594653.0
         },
         {
             "ID": 4,
@@ -60,7 +60,7 @@
             "Email": "chinapak.t@ku.th",
             "NisitID": "6430300234",
             "ShopID": "S001",
-            "Point": 4463
+            "Point": 4558
         },
         {
             "ID": 4,
@@ -95,7 +95,7 @@
             "Email": "chinapak.t@ku.th",
             "NisitID": "6430300234",
             "ShopID": "S002",
-            "Point": 30
+            "Point": 12
         },
         {
             "ID": 4,
@@ -104,90 +104,6 @@
             "NisitID": "6430300048",
             "ShopID": "S002",
             "Point": 0
-        }
-    ],
-    "TIMESTAMP_SHOP1": [
-        {
-            "ID": 1,
-            "About": "money",
-            "UID": "test",
-            "Email": "test@ku.th",
-            "Cost": 20,
-            "TimeStamp": "test"
-        },
-        {
-            "ID": 2,
-            "ABOUT": "point",
-            "UID": "74 F1 23 03 90 00",
-            "Email": "chinapak.t@ku.th",
-            "Cost": 25,
-            "TimeStamp": "2024-03-12 04:13:35"
-        },
-        {
-            "ID": 3,
-            "ABOUT": "money",
-            "UID": "74 F1 23 03 90 00",
-            "Email": "chinapak.t@ku.th",
-            "Cost": 120,
-            "TimeStamp": "2024-03-12 04:15:50"
-        },
-        {
-            "ID": 4,
-            "ABOUT": "money",
-            "UID": "74 F1 23 03 90 00",
-            "Email": "chinapak.t@ku.th",
-            "Cost": 570,
-            "TimeStamp": "2024-03-12 04:21:32"
-        },
-        {
-            "ID": 5,
-            "ABOUT": "point",
-            "UID": "74 F1 23 03 90 00",
-            "Email": "chinapak.t@ku.th",
-            "Cost": 110,
-            "TimeStamp": "2024-03-12 04:22:07"
-        }
-    ],
-    "TIMESTAMP_SHOP2": [
-        {
-            "ID": 1,
-            "About": "money",
-            "UID": "test",
-            "Email": "test@ku.th",
-            "Cost": 20,
-            "TimeStamp": "test"
-        },
-        {
-            "ID": 2,
-            "ABOUT": "point",
-            "UID": "74 F1 23 03 90 00",
-            "Email": "chinapak.t@ku.th",
-            "Cost": 5,
-            "TimeStamp": "2024-03-12 04:12:12"
-        },
-        {
-            "ID": 3,
-            "ABOUT": "money",
-            "UID": "74 F1 23 03 90 00",
-            "Email": "chinapak.t@ku.th",
-            "Cost": 700,
-            "TimeStamp": "2024-03-12 04:21:40"
-        }
-    ],
-    "TIMESTAMP_TOPUP": [
-        {
-            "ID": 1,
-            "UID": "test",
-            "Email": "test@ku.th",
-            "Topup": 20,
-            "TimeStamp": "test"
-        },
-        {
-            "ID": 2,
-            "UID": "74 F1 23 03 90 00",
-            "Email": "chinapak.t@ku.th",
-            "Topup": "5551",
-            "TimeStamp": "2024-03-12 04:36:11"
         }
     ]
 }

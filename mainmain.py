@@ -1456,10 +1456,10 @@ if __name__ == "__main__":
             print(f"Card UID: {uid}")
             print(type(uid))
             print("...")
+            app = App()
+            app.mainloop()
             n = 0
-            break 
         elif check != 0:
             n=1
         
-    app = App()
-    app.mainloop()
+    

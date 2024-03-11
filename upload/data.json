@@ -1,109 +1,109 @@
 {
-    "USER": [
-        {
-            "ID": 1,
-            "UID": "00 00 00 00 00 01",
-            "NisitID": "6430300000",
-            "UserName": "Test",
-            "LastName": "Test",
-            "Email": "Test.t@ku.th",
-            "Money": 0
-        },
-        {
-            "ID": 2,
-            "UID": "FF 5B 23 03 90 00",
-            "NisitID": "6430300111",
-            "UserName": "jakkapop",
-            "LastName": "promnam",
-            "Email": "jakkapop.p@ku.th",
-            "Money": 1480.0
-        },
-        {
-            "ID": 3,
-            "UID": "74 F1 23 03 90 00",
-            "NisitID": "6430300234",
-            "UserName": "chinapak",
-            "LastName": "tompudsa",
-            "Email": "chinapak.t@ku.th",
-            "Money": 685468.0
-        },
-        {
-            "ID": 4,
-            "UID": "7E 46 24 03 90 00",
-            "NisitID": "6430300048",
-            "UserName": "baskungza55+",
-            "LastName": "kuy",
-            "Email": "krittin.wo@ku.th",
-            "Money": 0
-        }
-    ],
-    "SHOP1": [
-        {
-            "ID": 1,
-            "UID": "00 00 00 00 00 01",
-            "Email": "Test.t@ku.th",
-            "NisitID": "6430300000",
-            "ShopID": "S001",
-            "Point": 0
-        },
-        {
-            "ID": 2,
-            "UID": "FF 5B 23 03 90 00",
-            "Email": "jakkapop.p@ku.th",
-            "NisitID": "6430300111",
-            "ShopID": "S001",
-            "Point": 83
-        },
-        {
-            "ID": 3,
-            "UID": "74 F1 23 03 90 00",
-            "Email": "chinapak.t@ku.th",
-            "NisitID": "6430300234",
-            "ShopID": "S001",
-            "Point": 1
-        },
-        {
-            "ID": 4,
-            "UID": "7E 46 24 03 90 00",
-            "Email": "krittin.wo@ku.th",
-            "NisitID": "6430300048",
-            "ShopID": "S001",
-            "Point": 0
-        }
-    ],
-    "SHOP2": [
-        {
-            "ID": 1,
-            "UID": "00 00 00 00 00 01",
-            "Email": "Test.t@ku.th",
-            "NisitID": "6430300000",
-            "ShopID": "S002",
-            "Point": 0,
-            "Timestamp": "2024-03-10T16:05:00Z"
-        },
-        {
-            "ID": 2,
-            "UID": "FF 5B 23 03 90 00",
-            "Email": "jakkapop.p@ku.th",
-            "NisitID": "6430300111",
-            "ShopID": "S002",
-            "Point": 381
-        },
-        {
-            "ID": 3,
-            "UID": "74 F1 23 03 90 00",
-            "Email": "chinapak.t@ku.th",
-            "NisitID": "6430300234",
-            "ShopID": "S002",
-            "Point": 12
-        },
-        {
-            "ID": 4,
-            "UID": "7E 46 24 03 90 00",
-            "Email": "krittin.wo@ku.th",
-            "NisitID": "6430300048",
-            "ShopID": "S002",
-            "Point": 0
-        }
-    ]
+  "USER": [
+    {
+      "ID": 1,
+      "UID": "00 00 00 00 00 01",
+      "NisitID": "6430300000",
+      "UserName": "Test",
+      "LastName": "Test",
+      "Email": "Test.t@ku.th",
+      "Money": 5000
+    },
+    {
+      "ID": 2,
+      "UID": "FF 5B 23 03 90 00",
+      "NisitID": "6430300111",
+      "UserName": "jakkapop",
+      "LastName": "promnam",
+      "Email": "jakkapop.p@ku.th",
+      "Money": 1480.0
+    },
+    {
+      "ID": 3,
+      "UID": "74 F1 23 03 90 00",
+      "NisitID": "6430300234",
+      "UserName": "chinapak",
+      "LastName": "tompudsa",
+      "Email": "chinapak.t@ku.th",
+      "Money": 9685792.0
+    },
+    {
+      "ID": 4,
+      "UID": "7E 46 24 03 90 00",
+      "NisitID": "6430300048",
+      "UserName": "baskungza55+",
+      "LastName": "kuy",
+      "Email": "krittin.wo@ku.th",
+      "Money": 0
+    }
+  ],
+  "SHOP1": [
+    {
+      "ID": 1,
+      "UID": "00 00 00 00 00 01",
+      "Email": "Test.t@ku.th",
+      "NisitID": "6430300000",
+      "ShopID": "S001",
+      "Point": 0
+    },
+    {
+      "ID": 2,
+      "UID": "FF 5B 23 03 90 00",
+      "Email": "jakkapop.p@ku.th",
+      "NisitID": "6430300111",
+      "ShopID": "S001",
+      "Point": 83
+    },
+    {
+      "ID": 3,
+      "UID": "74 F1 23 03 90 00",
+      "Email": "chinapak.t@ku.th",
+      "NisitID": "6430300234",
+      "ShopID": "S001",
+      "Point": 1
+    },
+    {
+      "ID": 4,
+      "UID": "7E 46 24 03 90 00",
+      "Email": "krittin.wo@ku.th",
+      "NisitID": "6430300048",
+      "ShopID": "S001",
+      "Point": 0
+    }
+  ],
+  "SHOP2": [
+    {
+      "ID": 1,
+      "UID": "00 00 00 00 00 01",
+      "Email": "Test.t@ku.th",
+      "NisitID": "6430300000",
+      "ShopID": "S002",
+      "Point": 0,
+      "Timestamp": "2024-03-10T16:05:00Z"
+    },
+    {
+      "ID": 2,
+      "UID": "FF 5B 23 03 90 00",
+      "Email": "jakkapop.p@ku.th",
+      "NisitID": "6430300111",
+      "ShopID": "S002",
+      "Point": 381
+    },
+    {
+      "ID": 3,
+      "UID": "74 F1 23 03 90 00",
+      "Email": "chinapak.t@ku.th",
+      "NisitID": "6430300234",
+      "ShopID": "S002",
+      "Point": 12
+    },
+    {
+      "ID": 4,
+      "UID": "7E 46 24 03 90 00",
+      "Email": "krittin.wo@ku.th",
+      "NisitID": "6430300048",
+      "ShopID": "S002",
+      "Point": 0
+    }
+  ]
 }

@@ -1118,6 +1118,10 @@ class App(tk.Tk):
 
         with open("data.json", "w") as file:
             json.dump(data, file, indent=4)
+    
+    #================================================== จบ function สมัครสมาชิก=================================================#
+    
+    
 
 
 if __name__ == "__main__":

@@ -8,12 +8,28 @@ import smtplib
 import random
 from ftplib import FTP
 import os
+from datetime import datetime
 
 
 
+# ftp = FTP('127.0.0.1')
+# ftp.login(user='Admin', passwd='1234')
+# local_directory = r'C:\Krittin\Network\FTP\Server'
+# file_path = r'C:\Krittin\Network\FTP\data.json'
+        
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
+        
+        
+
+        # self.original_file_path = 'C:\\Krittin\\Network\\Project\\data.json'
+
+        # self.ftp_host = '127.0.0.1'
+        # self.ftp_username = 'Admin'
+        # self.ftp_password = '1234'
+        # self.upload_path = os.path.basename(r"C:\Krittin\Network\FTP")  # หรือระบุเส้นทางเต็มถ้าต้องการ
+        
         
         self.geometry('925x500+300+200')
         self.title('ระบบจัดการเงิน')
@@ -21,11 +37,7 @@ class App(tk.Tk):
         
         self.otp = 0
         
-        self.ftp = FTP('127.0.0.1')
-        self.ftp.login(user='Admin', passwd='1234')
         
-        self.local_directory = r'C:\Krittin\Network\Project\upload'
-        self.file_path = r'C:\Krittin\Network\Project\data.json'
 
         shops = ["ร้านค้า1", "ร้านค้า2"]
 
@@ -45,10 +57,10 @@ class App(tk.Tk):
         self.logout_button = tk.Button(self.navbar_frame,bg="#333",border=0,font=('Browallia',14),fg='white', text="ออกจากระบบ", command=lambda: self.select_frame_by_name("login"))
         self.logout_button.pack(side=tk.RIGHT, padx=10,pady=5)
         
-        self.upload_button = tk.Button(self.navbar_frame,bg="#333",border=0,font=('Browallia',14),fg='yellow', text="อัปโหลดข้อมูล",command=lambda : self.uploadFile(self.local_directory,"data.json"))
+        self.upload_button = tk.Button(self.navbar_frame,bg="#333",border=0,font=('Browallia',14),fg='yellow', text="อัปโหลดข้อมูล",command=lambda :self.uploadFile(local_directory))
         self.upload_button.pack(side=tk.RIGHT, padx=10,pady=5)
 
-        self.download_button = tk.Button(self.navbar_frame,bg="#333",border=0,font=('Browallia',14),fg='yellow', text="ดาวน์โหลดข้อมูล")
+        self.download_button = tk.Button(self.navbar_frame,bg="#333",border=0,font=('Browallia',14),fg='yellow', text="ดาวน์โหลดข้อมูล",command=lambda :self.downloadFile("data.json", local_directory))
         self.download_button.pack(side=tk.RIGHT, padx=10,pady=5)
 
         #=================================================หน้า login=====================================================#
@@ -951,6 +963,8 @@ class App(tk.Tk):
 
         with open(filename, 'w') as file:
             json.dump(data, file, indent=4)
+            
+
         
         self.showmoney(uid)
     
@@ -1274,14 +1288,64 @@ class App(tk.Tk):
 
     #======================================================= download & upload =============================================#
 
-    def uploadFile(self, local_filename, remote_directory):
-        remote_filepath = f'{remote_directory}/{local_filename}'
-        with open(local_filename, 'rb') as localfile:
-            try:
-                self.ftp.storbinary(f'STOR {remote_filepath}', localfile)
-                print(f"File {local_filename} uploaded successfully to {remote_filepath}")
-            except Exception as e:
-                print(f"Failed to upload file: {e}")
+    def rename_file_with_datetime(self):
+        folder_path, original_file_name = os.path.split(self.original_file_path)
+        file_extension = os.path.splitext(original_file_name)[1]
+        new_file_name = datetime.now().strftime("%Y%m%d_%H%M%S") + file_extension
+        new_file_path = os.path.join(folder_path, new_file_name)
+        os.rename(self.original_file_path, new_file_path)
+        return new_file_path
+
+    def upload_file_to_ftp(self):
+        # เรียกใช้เมทอดเพื่อเปลี่ยนชื่อไฟล์ด้วยวันที่และเวลาปัจจุบัน
+        new_file_path = self.rename_file_with_datetime()
+
+        ftp = FTP(self.ftp_host)
+        ftp.login(self.ftp_, self.ftp_password)
+        
+        # ตั้งค่าโหมดไบนารีสำหรับการโอนไฟล์
+        ftp.set_pasv(True)
+        ftp.storbinary(f"STOR {self.upload_path}", open(new_file_path, 'rb'))
+        
+        ftp.quit()
+        print(f"Uploaded {new_file_path} to {self.upload_path} on {self.ftp_host}")
+        
+        
+        
+    def downloadFile(self,remote_filename, local_filepath):
+        local_filepath = f'{local_directory}\\{remote_filename}'
+        with open(local_filepath, 'wb') as localfile:
+            ftp.retrbinary(f'RETR {remote_filename}', localfile.write, 1024)
+
+    def uploadFile(self,local):
+        
+        filename = os.path.basename(local_filepath)
+        print("upload com")
+        
+        with open(local_filepath, 'rb') as file:
+            ftp.storbinary(f'STOR {filename}', file)
+
+
+
+# upload_file_to_ftp(ftp_host, ftp_username, ftp_password, new_file_path, upload_path)
+
+# def downloadFile(remote_filename, local_directory):
+#     local_filepath = f'{local_directory}\\{remote_filename}'
+#     with open(local_filepath, 'wb') as localfile:
+#         ftp.retrbinary(f'RETR {remote_filename}', localfile.write, 1024)
+
+# local_directory = r'C:\Krittin\Network\Project'
+# downloadFile("data.json", local_directory)
+# print("ดึงข้อมูลสำเร็จ")
+
+    # def uploadFile(self, local_filename, remote_directory):
+    #     remote_filepath = f'{remote_directory}/{local_filename}'
+    #     with open(local_filename, 'rb') as localfile:
+    #         try:
+    #             self.ftp.storbinary(f'STOR {remote_filepath}', localfile)
+    #             print(f"File {local_filename} uploaded successfully to {remote_filepath}")
+    #         except Exception as e:
+    #             print(f"Failed to upload file: {e}")
     
     # def download_file_from_ftp(self, remote_filename):
     #     self.ftp.cwd(r'C:\Krittin\Network\Project\upload') 
@@ -1294,9 +1358,11 @@ class App(tk.Tk):
     #     except self.ftplib.all_errors as e:
     #         print(f"Failed to download {remote_filename}: {e}")
 
-            
-            
 if __name__ == "__main__":
+    ftp = FTP('127.0.0.1')
+    ftp.login(user='Admin', passwd='1234')
+    local_directory = r'C:\Krittin\Network\Project'
+    local_filepath = r'C:\Krittin\Network\Project\data.json'   
     my_obj = NFC_Reader()
     uid = my_obj.read_uid()
     app = App()

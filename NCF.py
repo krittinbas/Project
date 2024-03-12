@@ -105,6 +105,7 @@ class NFC_Reader():
 		assert len(self.readers) > 0
 		self.reader = self.readers[0]
 		print("Found reader: " +  str(self.reader))
+  
 		
 		self.hresult, self.hcard, self.dwActiveProtocol = SCardConnect(
 				self.hcontext,

@@ -7,7 +7,7 @@
             "UserName": "Test",
             "LastName": "Test",
             "Email": "Test.t@ku.th",
-            "Money": 10000
+            "Money": 200
         },
         {
             "ID": 2,
@@ -29,12 +29,12 @@
         },
         {
             "ID": 4,
-            "UID": "7E 46 24 03 90 00",
-            "NisitID": "6430300048",
-            "UserName": "baskungza55+",
-            "LastName": "kuy",
-            "Email": "krittin.wo@ku.th",
-            "Money": 0
+            "UID": "C3 EE 23 03 90 00",
+            "NisitID": "6430300196",
+            "UserName": "chanitpol",
+            "LastName": "saengraksa",
+            "Email": "chanitpol.s@ku.th",
+            "Money": 12000.0
         }
     ],
     "SHOP1": [
@@ -64,9 +64,9 @@
         },
         {
             "ID": 4,
-            "UID": "7E 46 24 03 90 00",
-            "Email": "krittin.wo@ku.th",
-            "NisitID": "6430300048",
+            "UID": "C3 EE 23 03 90 00",
+            "Email": "chanitpol.s@ku.th",
+            "NisitID": "6430300196",
             "ShopID": "S001",
             "Point": 0
         }
@@ -99,11 +99,48 @@
         },
         {
             "ID": 4,
-            "UID": "7E 46 24 03 90 00",
-            "Email": "krittin.wo@ku.th",
-            "NisitID": "6430300048",
+            "UID": "C3 EE 23 03 90 00",
+            "Email": "chanitpol.s@ku.th",
+            "NisitID": "6430300196",
             "ShopID": "S002",
             "Point": 0
+        }
+    ],
+    "TIMESTAMP_SHOP1": [
+        {
+            "ID": 1,
+            "ABOUT": "test",
+            "UID": "test123",
+            "Email": "Test.t@ku.th",
+            "Cost": 20,
+            "TimeStamp": "test"
+        }
+    ],
+    "TIMESTAMP_SHOP2": [
+        {
+            "ID": 1,
+            "ABOUT": "test",
+            "UID": "test123",
+            "Email": "Test.t@ku.th",
+            "Cost": 20,
+            "TimeStamp": "test"
+        },
+        {
+            "ID": 2,
+            "ABOUT": "money",
+            "UID": "C3 EE 23 03 90 00",
+            "Email": "chanitpol.s@ku.th",
+            "Cost": 50,
+            "TimeStamp": "2024-03-12 10:45:41"
+        }
+    ],
+    "TIMESTAMP_TOPUP": [
+        {
+            "ID": 1,
+            "UID": "test",
+            "Email": "Test.t@ku.th",
+            "Topup": 20,
+            "TimeStamp": "test"
         }
     ]
 }

@@ -172,13 +172,13 @@ class App(tk.Tk):
             {"name": "เข็มขัด", "price": 30},
             {"name": "เสื้อ", "price": 30},
             {"name": "กางเกง", "price": 30 },
-            {"name": "2", "price": 30},
-            {"name": "เ3ข็มขัด", "price": 30},
-            {"name": "เข็4มขัด", "price": 30},
-            {"name": "เข็ม5ขัด", "price": 30},
-            {"name": "5", "price": 30},
-            {"name": "เข็ม52ขัด", "price": 30},
-            {"name": "เข็ม53ขัด", "price": 30},
+            {"name": "ถุงเท้า", "price": 30},
+            {"name": "รองเท้า", "price": 30},
+            {"name": "เนคไท", "price": 30},
+            {"name": "เข็มหมุด", "price": 30},
+            {"name": "ด้าย", "price": 30},
+            {"name": "นาฬิกา", "price": 30},
+            {"name": "ปากกา", "price": 30},
         ]
 
         self.shopping_cart = []
@@ -226,16 +226,16 @@ class App(tk.Tk):
         #=================================================หน้า ร้านค้า2=====================================================#
 
         self.products_shop2 = [
-            {"name": "สินค้า1", "price": 50, "point" : 5},
-            {"name": "สินค้า2", "price": 50 , "point" : 5},
-            {"name": "สินค้า3", "price": 50 , "point" : 5},
-            {"name": "สินค้า4", "price": 50 , "point" : 5},
-            {"name": "สินค้า5", "price": 50 , "point" : 5},
-            {"name": "สินค้า6", "price": 50 , "point" : 5},
-            {"name": "สินค้า7", "price": 50 , "point" : 5},
-            {"name": "สินค้า8", "price": 50 , "point" : 5},
-            {"name": "สินค้า9", "price": 50 , "point" : 5},
-            {"name": "สินค้า10", "price": 50 , "point" : 5},
+            {"name": "ป๊อปคอน", "price": 5-0, "point" : 5},
+            {"name": "น้ำอัดลม", "price": 50 , "point" : 5},
+            {"name": "ไส้กรอก", "price": 50 , "point" : 5},
+            {"name": "มันฝรั่งทอด", "price": 50 , "point" : 5},
+            {"name": "ขนมจีบ", "price": 50 , "point" : 5},
+            {"name": "ซาลาเปา", "price": 50 , "point" : 5},
+            {"name": "เกี๊ยว", "price": 50 , "point" : 5},
+            {"name": "หมูปิ้ง", "price": 50 , "point" : 5},
+            {"name": "ข้าวเหนียว", "price": 50 , "point" : 5},
+            {"name": "แซนวิช", "price": 50 , "point" : 5},
         ]
 
         self.shopping_cart2 = []
@@ -661,7 +661,7 @@ class App(tk.Tk):
             data = json.load(file)
 
         card_owner_info = None
-        for user in data['USER']:
+        for user in data[shop_name]:
             if user['UID'] == card_owner_uid:
                 card_owner_info = user
                 break
@@ -708,9 +708,8 @@ class App(tk.Tk):
         
         if card_owner_info:
             info_text = f"รหัสนิสิต : {card_owner_info['NisitID']}\n"
-            info_text += f"ชื่อ : {card_owner_info['UserName']}\n"
-            info_text += f"นามสกุล : {card_owner_info['LastName']}\n"
-            info_text += f"แต้มคงเหลือ : {card_owner_info['Money']}"
+            info_text += f"ชื่อ : {card_owner_info['Email']}\n"
+            info_text += f"แต้มคงเหลือ : {card_owner_info['Point']}"
 
             info_label = tk.Label(new_window, text=info_text, font=('Browallia New', 22),bg='white')
             info_label.place(anchor='w', x=200, y=240)
